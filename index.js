@@ -101,6 +101,14 @@ Meteor.typeahead = function(element, source) {
 	return instance;
 };
 
+Meteor.typeahead.destroy = function() {
+	var template = Template.instance();
+	template.$('.typeahead').each((index, element) => {
+		var $e = $(element);
+		$e.typeahead('destroy');
+	});
+};
+
 /**
  * Activates all typeahead elements.
  * @param selector (optional) selector to find typeahead elements to be activated

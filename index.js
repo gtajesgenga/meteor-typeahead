@@ -101,12 +101,15 @@ Meteor.typeahead = function(element, source) {
 	return instance;
 };
 
-Meteor.typeahead.destroy = function() {
-	var template = Template.instance();
-	template.$('.typeahead').each((index, element) => {
-		var $e = $(element);
-		$e.typeahead('destroy');
-	});
+Meteor.typeahead.destroy = function(elem) {
+
+	if (elem) {
+		var $e = $(elem);
+
+		if ($e.typeahead) {
+			$e.typeahead('destroy');
+		}
+	}
 };
 
 /**
